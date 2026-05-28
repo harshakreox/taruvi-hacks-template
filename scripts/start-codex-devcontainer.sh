@@ -108,6 +108,9 @@ printf '{"apiKey":"%s"}\n' "$PROVIDER_KEY" \
 
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "  ✅ All set! Open the ChatGPT panel in the sidebar."
+echo "  ✅ All set! Opening ChatGPT panel..."
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
+
+# Open the ChatGPT sidebar panel automatically
+code --command "chatgpt.openSidebar" 2>/dev/null || true
