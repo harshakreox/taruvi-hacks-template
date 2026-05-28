@@ -26,6 +26,7 @@ open_env_once_if_possible() {
 
 while true; do
   eval "$(bash scripts/sync-taruvi-env.sh .env)"
+  export TARUVI_SITE_URL TARUVI_APP_SLUG TARUVI_API_KEY
 
   if [ -n "${TARUVI_SITE_URL//[[:space:]]/}" ] \
     && [ -n "${TARUVI_API_KEY//[[:space:]]/}" ] \
