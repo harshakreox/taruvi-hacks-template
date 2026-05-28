@@ -101,25 +101,13 @@ with open('.mcp.json', 'w') as f:
 "
 echo "✅ MCP server configured."
 
-source /usr/local/share/nvm/nvm.sh
-nvm install 22
-nvm use 22
-
-command -v codex >/dev/null 2>&1 || npm install -g @openai/codex
-
-VSCODE_EXTENSION_ID="${CODEX_VSCODE_EXTENSION_ID:-openai.chatgpt}"
-if command -v code >/dev/null 2>&1; then
-  code --install-extension "$VSCODE_EXTENSION_ID" --force || true
-elif command -v code-server >/dev/null 2>&1; then
-  code-server --install-extension "$VSCODE_EXTENSION_ID" --force || true
-else
-  echo "VS Code CLI not found; skipping extension install ($VSCODE_EXTENSION_ID)."
-fi
+# Write key to OpenAI auth file so the ChatGPT extension picks it up without prompting
+mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}/openai"
+printf '{"apiKey":"%s"}\n' "$PROVIDER_KEY" \
+  > "${XDG_CONFIG_HOME:-$HOME/.config}/openai/auth.json"
 
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "  ✅ All set! Launching Codex..."
+echo "  ✅ All set! Open the ChatGPT panel in the sidebar."
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
-
-exec codex --sandbox danger-full-access --ask-for-approval never

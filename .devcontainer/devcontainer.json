@@ -19,13 +19,14 @@
   "portsAttributes": {
     "5173": {
       "label": "Refine Dev Server",
-      "onAutoForward": "openPreview"
+      "onAutoForward": "openBrowserOnce"
     }
   },
   "customizations": {
     "vscode": {
       "extensions": [
-        "seunlanlege.action-buttons"
+        "seunlanlege.action-buttons",
+        "openai.chatgpt"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "bash",
@@ -56,10 +57,10 @@
               "tooltip": "Fetch your AI provider key from Taruvi secrets and launch Codex"
             },
             {
-              "name": "🚀 Dev Server",
-              "singleInstance": true,
-              "command": "npm run dev -- --host 0.0.0.0 --port 5173",
-              "tooltip": "Start the development server on port 5173"
+              "name": "👁️ Open Preview",
+              "singleInstance": false,
+              "command": "code --open-url \"https://${CODESPACE_NAME}-5173.${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}\"",
+              "tooltip": "Open the app preview inside VS Code (log in via the browser tab first)"
             }
           ]
         }
