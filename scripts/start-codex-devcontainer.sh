@@ -135,4 +135,15 @@ else
 fi
 
 echo "  ✅  AI provider key configured."
-echo "  ✅  Codex authentication ready."
+
+# Authenticate the Codex CLI using the documented login method so it does not
+# show the auth menu. This writes ${CODEX_HOME}/auth.json (= .codex/auth.json)
+# in api_key mode. Distinct from the ~/.config/openai/auth.json written above
+# for the VS Code extension.
+if [ "$PROVIDER_VAR" = "OPENAI_API_KEY" ]; then
+  if command -v codex >/dev/null 2>&1; then
+    printf '%s\n' "$PROVIDER_KEY" | codex login --with-api-key 2>/dev/null \
+      && echo "  ✅  Codex CLI authenticated." \
+      || echo "  ⚠️   Codex CLI login skipped — will use OPENAI_API_KEY env var."
+  fi
+fi

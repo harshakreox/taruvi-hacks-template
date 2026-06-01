@@ -25,9 +25,19 @@ That is all.
 After you save `.env`, the following will happen automatically:
 
 - Taruvi MCP integration is configured
-- Codex / ChatGPT is authenticated
-- The app starts and a preview opens automatically
-- The Codex sidebar opens (if your browser allows it)
+- Codex is authenticated (AI provider key fetched from Taruvi)
+- The app starts on port 5173
+- A preview opens automatically inside VS Code
+
+---
+
+## Using Codex (AI)
+
+Click the **🤖 Codex CLI** button in the status bar at the bottom to launch Codex in the terminal.
+
+Your API key is already configured — no login or key paste required.
+
+To use the ChatGPT sidebar instead, click the ChatGPT icon in the left Activity Bar.
 
 ---
 
@@ -35,13 +45,10 @@ After you save `.env`, the following will happen automatically:
 
 Use the buttons in the **status bar at the bottom** of this window:
 
-    ⚙️ Reopen .env       — reopen the .env file to check or update values
-    🔁 Retry Setup       — re-run Taruvi and Codex configuration
-    👁️ Open Preview      — open the app preview manually
-    🤖 Open Codex Chat   — open the Codex AI sidebar
-
-If the Codex sidebar did not open automatically, click **🤖 Open Codex Chat** in the status bar.
-As a final fallback, click the ChatGPT icon in the far-left Activity Bar.
+    ⚙️ Reopen .env     — reopen the .env file to check or update values
+    🔁 Retry Setup     — re-run Taruvi and Codex configuration
+    👁️ Open Preview    — open the app preview manually
+    🤖 Codex CLI       — launch Codex in the terminal
 
 ---
 

@@ -63,16 +63,10 @@
               "tooltip": "Open the app preview — log in via the browser tab first if prompted"
             },
             {
-              "name": "🤖 Open Codex Chat",
-              "singleInstance": true,
-              "command": "code --command chatgpt.openSidebar",
-              "tooltip": "Open the Codex/ChatGPT sidebar — use this if it did not open automatically after setup"
-            },
-            {
               "name": "🤖 Codex CLI",
               "singleInstance": true,
               "command": "bash -c 'set -a; [ -f .env ] && source .env; set +a; exec codex'",
-              "tooltip": "Optional: launch Codex in the terminal instead of the sidebar"
+              "tooltip": "Launch Codex CLI — sources .env so no manual key entry is needed"
             }
           ]
         }

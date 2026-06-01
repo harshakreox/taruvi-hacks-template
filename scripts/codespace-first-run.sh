@@ -64,11 +64,6 @@ else
   fi
 fi
 
-# ── Best-effort open Codex sidebar ────────────────────────────────────────────
-# chatgpt.openSidebar is the correct command per developers.openai.com/codex/ide/commands
-# This may open a new browser tab in Codespaces web — treated as best-effort only.
-code --command chatgpt.openSidebar 2>/dev/null || true
-
 # ── Start dev server ──────────────────────────────────────────────────────────
 echo "  🚀  Starting app on port 5173..."
 echo ""
