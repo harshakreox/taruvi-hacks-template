@@ -37,7 +37,7 @@ Click the **🤖 Codex CLI** button in the status bar at the bottom to launch Co
 
 Your API key is already configured — no login or key paste required.
 
-To use the ChatGPT sidebar instead, click the ChatGPT icon in the left Activity Bar.
+To use the ChatGPT sidebar instead, click the **Open Codex Sidebar** button in the top right corner of VS Code.
 
 ---
 

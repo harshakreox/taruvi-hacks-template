@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
-# Codespace first-run orchestrator.
+# Codespace setup orchestrator.
 # Called by postAttachCommand on every attach.
-# Waits for .env to be valid, runs setup once, then starts the dev server.
+# Waits for .env to be valid and runs Taruvi + Codex setup.
+# Dev server is started by the separate 'app' postAttachCommand key.
 
 set -uo pipefail
 
@@ -37,7 +38,7 @@ env_is_valid() {
 
 # ── Skip setup on re-attach if already complete and env is still valid ─────────
 if [ -f "$MARKER" ] && env_is_valid; then
-  echo "  ✅  Already set up — starting dev server..."
+  echo "  ✅  Already set up."
   echo ""
 else
   # Wait for participant to save a valid .env
@@ -63,12 +64,3 @@ else
     echo ""
   fi
 fi
-
-# ── Start dev server ──────────────────────────────────────────────────────────
-echo "  🚀  Starting app on port 5173..."
-echo ""
-
-source /usr/local/share/nvm/nvm.sh 2>/dev/null || true
-nvm use 22 --silent 2>/dev/null || true
-
-exec npm run dev -- --host 0.0.0.0 --port 5173

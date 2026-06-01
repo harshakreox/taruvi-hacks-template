@@ -12,7 +12,9 @@
   "postCreateCommand": "bash -lc '[ -f .mcp.json ] || cp .mcp.example.json .mcp.json; [ -f .env ] || cp .env.example .env; mkdir -p .codex/projects; source /usr/local/share/nvm/nvm.sh; nvm install 22; nvm use 22; npm install --legacy-peer-deps; command -v codex >/dev/null 2>&1 || npm install -g @openai/codex'",
   "postStartCommand": "bash -lc '[ -f .mcp.json ] || cp .mcp.example.json .mcp.json; [ -f .env ] || cp .env.example .env; mkdir -p .codex/projects .codespace'",
   "postAttachCommand": {
-    "setup": "bash -lc 'bash scripts/codespace-first-run.sh'"
+    "app": "bash -lc 'source /usr/local/share/nvm/nvm.sh 2>/dev/null || true; nvm use 22 --silent 2>/dev/null || true; [ -d node_modules ] || npm install --legacy-peer-deps; exec npm run dev -- --host 0.0.0.0 --port 5173'",
+    "setup": "bash -lc 'bash scripts/codespace-first-run.sh'",
+    "codex": "bash -lc 'until [ -f .codespace/.setup-complete ]; do sleep 2; done; source /usr/local/share/nvm/nvm.sh 2>/dev/null || true; nvm use 22 --silent 2>/dev/null || true; set -a; [ -f .env ] && source .env; set +a; exec codex'"
   },
   "forwardPorts": [5173],
   "portsAttributes": {
