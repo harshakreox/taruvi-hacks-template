@@ -54,7 +54,7 @@
               "name": "🔑 Connect Codex",
               "singleInstance": true,
               "command": "bash scripts/start-codex-devcontainer.sh",
-              "tooltip": "Fetch your AI provider key from Taruvi secrets — then paste the key shown in the terminal into the ChatGPT panel"
+              "tooltip": "Fetch your AI provider key from Taruvi, configure MCP, and open the Codex sidebar — your default way to build"
             },
             {
               "name": "👁️ Open Preview",
@@ -66,7 +66,7 @@
               "name": "🤖 Codex CLI",
               "singleInstance": true,
               "command": "bash -c 'set -a; [ -f .env ] && source .env; set +a; exec codex'",
-              "tooltip": "Launch Codex CLI — run 🔑 Connect Codex first, then open a new terminal and run this"
+              "tooltip": "Optional: launch Codex in the terminal instead of the sidebar — run 🔑 Connect Codex first"
             }
           ]
         }

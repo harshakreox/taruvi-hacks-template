@@ -113,8 +113,9 @@ else
   echo "export ${PROVIDER_VAR}=${PROVIDER_KEY}" >> ~/.bashrc
 fi
 
-# Try to open the ChatGPT sidebar automatically
-code --command openai.chatgpt.chat.openChat >/dev/null 2>&1 || true
+# Open the Codex sidebar using the correct command ID from
+# developers.openai.com/codex/ide/commands
+code --command chatgpt.openSidebar >/dev/null 2>&1 || true
 
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
