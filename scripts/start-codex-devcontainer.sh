@@ -106,17 +106,30 @@ mkdir -p "$HOME/.config/openai"
 printf '{"apiKey":"%s"}\n' "$PROVIDER_KEY" \
   > "$HOME/.config/openai/auth.json"
 
-# Write key for Codex CLI (terminal fallback — does not auto-launch)
-printf '{"apiKey":"%s"}\n' "$PROVIDER_KEY" \
-  > "${CODEX_HOME}/auth.json"
+# Persist key to shell profile so `codex` CLI picks it up in any new terminal
+if grep -q "^export ${PROVIDER_VAR}=" ~/.bashrc 2>/dev/null; then
+  sed -i "s|^export ${PROVIDER_VAR}=.*|export ${PROVIDER_VAR}=${PROVIDER_KEY}|" ~/.bashrc
+else
+  echo "export ${PROVIDER_VAR}=${PROVIDER_KEY}" >> ~/.bashrc
+fi
+
+# Try to open the ChatGPT sidebar automatically
+code --command openai.chatgpt.chat.openChat >/dev/null 2>&1 || true
 
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "  ✅ Setup complete!"
+echo "  ✅ Setup complete! Your Codex integration with"
+echo "  the Taruvi platform's MCP context is ready."
 echo ""
-echo "  Open the ChatGPT panel in the sidebar and paste"
-echo "  your API key when prompted:"
+echo "  To use the ChatGPT sidebar:"
+echo "  1. Click the ChatGPT icon in the left Activity Bar"
+echo "     (or press Ctrl+Shift+P → 'ChatGPT: Open Chat')"
+echo "  2. Click 'Use API Key' at the bottom of the panel"
+echo "  3. Paste your key when prompted:"
 echo ""
 echo "  ${PROVIDER_VAR}=${PROVIDER_KEY}"
+echo ""
+echo "  To use Codex CLI instead, open a new terminal and run:"
+echo "  codex"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""

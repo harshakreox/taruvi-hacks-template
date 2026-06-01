@@ -19,7 +19,7 @@
   "portsAttributes": {
     "5173": {
       "label": "Refine Dev Server",
-      "onAutoForward": "openBrowserOnce"
+      "onAutoForward": "openPreview"
     }
   },
   "customizations": {
@@ -60,13 +60,13 @@
               "name": "👁️ Open Preview",
               "singleInstance": false,
               "command": "bash scripts/open-preview.sh",
-              "tooltip": "Open the app preview inside VS Code (log in via the browser tab first)"
+              "tooltip": "Print the preview URL — opens in a new browser tab. Log in there first, then the Simple Browser in VS Code will reflect your session."
             },
             {
               "name": "🤖 Codex CLI",
               "singleInstance": true,
-              "command": "codex",
-              "tooltip": "Launch Codex CLI in terminal — run 🔑 Connect Codex first to configure auth"
+              "command": "bash -c 'set -a; [ -f .env ] && source .env; set +a; exec codex'",
+              "tooltip": "Launch Codex CLI — run 🔑 Connect Codex first, then open a new terminal and run this"
             }
           ]
         }
