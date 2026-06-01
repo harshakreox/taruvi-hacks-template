@@ -4,11 +4,17 @@ set -euo pipefail
 URL="https://${CODESPACE_NAME}-5173.${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}"
 
 echo ""
-echo "  🌐  ${URL}"
+echo "  ┌─────────────────────────────────────────────────────────────┐"
+echo "  │  Preview URL:                                                │"
+echo "  │                                                             │"
+echo "  │  ${URL}"
+echo "  │                                                             │"
+echo "  │  The preview normally opens automatically inside VS Code    │"
+echo "  │  when setup completes. If it did not:                       │"
+echo "  │                                                             │"
+echo "  │  1. Open the URL above in a browser tab.                    │"
+echo "  │  2. Log in there once.                                       │"
+echo "  │  3. Return to Codespaces. The Simple Browser preview        │"
+echo "  │     will reflect your session.                              │"
+echo "  └─────────────────────────────────────────────────────────────┘"
 echo ""
-echo "  ↑ Click the URL above to open the app in a new browser tab."
-echo "  Log in there first, then come back — the preview will reflect your session."
-echo ""
-
-# Best-effort: try to open Simple Browser inside VS Code
-code --command simpleBrowser.show "$URL" 2>/dev/null || true
